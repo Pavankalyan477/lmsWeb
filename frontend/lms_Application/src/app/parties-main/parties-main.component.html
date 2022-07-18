@@ -1,0 +1,155 @@
+<div class="content">
+  <div class="header">
+     <button  (click)="changeSearch()" class="btn1"  mat-stroked-button>SEARCH</button>
+      <button (click)="changeUpload()" class="btn2" mat-stroked-button>UPLOAD</button>
+    <!-- <mat-button-toggle-group >
+     
+      <mat-button-toggle (click)="changeSearch()" class="btn1">SEARCH</mat-button-toggle>
+      <mat-button-toggle (click)="changeUpload()" class="btn1">UPLOAD</mat-button-toggle>
+    </mat-button-toggle-group> -->
+    
+  </div>
+
+  <div *ngIf="routeValue===true">
+    <div class="create-party">
+      <button mat-raised-button class="create-party-button" routerLink="/dashboard/add-party">
+        Create Party
+      </button>
+    </div>
+
+    <mat-accordion class="expansion">
+      <mat-expansion-panel class="expansion-panel">
+        <mat-expansion-panel-header class="expansion-header">
+          <mat-panel-title> Search Criteria </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="mat-content">
+          <form class="form-inputs">
+            <mat-form-field appearance="outline">
+              <mat-label>Party Id</mat-label>
+              <input matInput placeholder="Party Id" type="number" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Party Name</mat-label>
+              <input matInput placeholder="Party Name" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Find By Role</mat-label>
+              <mat-select>
+                <mat-option value="none">None</mat-option>
+                <mat-option value="customer">customer</mat-option>
+                <mat-option value="supplier">supplier</mat-option>
+                <mat-option value="employee">employee</mat-option>
+                <mat-option value="admin">admin</mat-option>
+                <mat-option value="manager">manager</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Find By Status</mat-label>
+              <mat-select>
+                <mat-option value="none">None</mat-option>
+                <mat-option value="active">Active</mat-option>
+                <mat-option value="inactive">Inactive</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>Find By Type</mat-label>
+              <mat-select>
+                <mat-option value="none">None</mat-option>
+                <mat-option value="group">Group</mat-option>
+                <mat-option value="person">Person</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Created From Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="from date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Created To Date</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="to date" />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button class="create-party-button">
+              Search
+            </button>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="PartyId">
+          <th mat-header-cell *matHeaderCellDef>PartyId</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            {{ element.PartyId }}
+          </td>
+        </ng-container>
+
+        >
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Roles">
+          <th mat-header-cell *matHeaderCellDef>Roles</th>
+          <td mat-cell *matCellDef="let element">{{ element.Roles }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="CreatedAt">
+          <th mat-header-cell *matHeaderCellDef>Created At</th>
+          <td mat-cell *matCellDef="let element">{{ element.CreatedAt }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ModifiedOn">
+          <th mat-header-cell *matHeaderCellDef>Modified On</th>
+          <td mat-cell *matCellDef="let element">{{ element.ModifiedOn }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ModifiedBy">
+          <th mat-header-cell *matHeaderCellDef>Modified By</th>
+          <td mat-cell *matCellDef="let element">{{ element.ModifiedBy }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <div class="paginator">
+      <mat-paginator
+        [length]=""
+       
+        showFirstLastButtons
+        [pageSize]="10"
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+    </div>
+  </div>
+  <div #upload *ngIf="routeValue===false">
+    <app-uploadfile></app-uploadfile>
+  </div>
+</div>

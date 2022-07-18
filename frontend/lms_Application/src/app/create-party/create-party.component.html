@@ -1,0 +1,58 @@
+<div class="content">
+    <div class="header">
+        <button  class="btn1"  mat-stroked-button>PARTY</button>
+        <mat-divider></mat-divider>
+     </div>
+     <div class="createParty">
+        <div class="createParty-form">
+          <div class="form-header">
+            <p class="form-title">Create Party</p>
+          </div>
+          <div>
+            <form action="submit">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Party Name</mat-label>
+                    <input matInput placeholder="Party Name" required>
+                    <mat-error *ngIf="partynameFormControl.hasError('required')">
+                        Party Name is<strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  
+
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Description"></textarea>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label >Party Type</mat-label>
+                    <mat-select required >
+                      <mat-option value="group">Group</mat-option>
+                      <mat-option value="person">Person</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Roles</mat-label>
+                    <mat-select required [formControl]="toppings" multiple>
+                      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Roles are <strong>required</strong>
+                      </mat-error> -->
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Gst No</mat-label>
+                    <input matInput placeholder="Gst No">
+                  </mat-form-field> <br>
+
+                  <button mat-raised-button class="btn">Create</button>
+
+            </form>
+          </div>
+        </div>
+        
+     </div>
+</div>
+

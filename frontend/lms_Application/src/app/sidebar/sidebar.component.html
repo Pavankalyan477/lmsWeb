@@ -1,0 +1,135 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="scrollable" >
+        <a ripple="false" (click)="select(' Products')" [ngClass]="{active: isActive( ' Products')}">
+      <mat-selection-list  #numbers [multiple]="false">
+        <mat-list-option  class="list-options">
+          Products
+          <mat-divider role="separator" aria-orientation="horizontal"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+    </a>
+    <a (click)="select('Parties')" routerLink="/dashboard/parties" [ngClass]="{active: isActive('Parties')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+          Parties
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+    </a>
+    <a (click)="select('Facilities')" [ngClass]="{active: isActive('Facilities')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Facilities
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+    </a>
+    <a (click)="select('BOMs')" [ngClass]="{active: isActive('BOMs')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         BOMs
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Procurement')" [ngClass]="{active: isActive('Procurement')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Procurement Items
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Reservation')" [ngClass]="{active: isActive('Reservation')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Reservation Items
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Purchaase')" [ngClass]="{active: isActive('Purchaase')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Purchase Orders
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('GRNs')" [ngClass]="{active: isActive('GRNs')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         GRNs
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Iuts')" [ngClass]="{active: isActive('Iuts')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         IUTs & Shipment 
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Issuances')" [ngClass]="{active: isActive('Issuances')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Issuances 
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Issuance')" [ngClass]="{active: isActive('Issuance')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Issuance Returns 
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Inventory')" [ngClass]="{active: isActive('Inventory')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Inventory Returns 
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Initial')" [ngClass]="{active: isActive('Initial')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Initial Inventory
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Reports')" [ngClass]="{active: isActive('Reports')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Reports
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+      <a (click)="select('Payments')" [ngClass]="{active: isActive('Payments')}">
+      <mat-selection-list #numbers [multiple]="false">
+        <mat-list-option class="list-options">
+         Payments
+          <mat-divider class="list-options"></mat-divider>
+        </mat-list-option>
+      </mat-selection-list>
+      </a>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content >
+    <div class="content">
+      <!-- <app-parties-main ></app-parties-main> -->
+      <router-outlet></router-outlet>
+    </div>
+    
+
+  </mat-drawer-content>
+</mat-drawer-container>

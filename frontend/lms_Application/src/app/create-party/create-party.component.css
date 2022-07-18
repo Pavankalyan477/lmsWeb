@@ -1,0 +1,82 @@
+.content {
+    width: 98%;
+    margin: auto;
+    margin-bottom: 10%;
+  }
+  .header {
+    padding-bottom: 5px;
+  }
+  .btn1 {
+    width: 14%;
+    padding: 7px;
+    background-color: #40608f;
+    border-radius: 0;
+    color: #f8f8f8;
+  }
+  .createParty{
+    border: 2px solid #40608f;
+    margin: 10px;
+    background: #e7e7e7;
+
+  }
+  .createParty-form{
+    border: 2px solid #40608f;
+    margin: 10px;
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    max-width: 25%;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    
+  }
+  .form-header{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .font-title{
+    font-weight: 500;
+  }
+.mat-form-field{
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    letter-spacing: normal;
+border-radius: 12px;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: .25em 0;
+    background-color: #f8f8f8;
+    padding: 0;
+}
+.mat-form-field-wrapper{
+    position: relative;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 .75em 0 .75em;
+    margin-top: -0.25em;
+    position: relative;
+}
+::ng-deep .mat-form-field-flex {
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+}
+form{
+    margin: 5px;
+}
+.btn{
+    background-color: #40608f;
+    color: #f8f8f8;
+    border-radius: 7px;
+    font-size: 16px;
+    height: fit-content;
+    width: fit-content;
+}
