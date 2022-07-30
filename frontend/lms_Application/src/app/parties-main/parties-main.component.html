@@ -1,18 +1,31 @@
 <div class="content">
   <div class="header">
-     <button  (click)="changeSearch()" class="btn1"  mat-stroked-button>SEARCH</button>
-      <button (click)="changeUpload()" class="btn2" mat-stroked-button>UPLOAD</button>
-    <!-- <mat-button-toggle-group >
-     
-      <mat-button-toggle (click)="changeSearch()" class="btn1">SEARCH</mat-button-toggle>
-      <mat-button-toggle (click)="changeUpload()" class="btn1">UPLOAD</mat-button-toggle>
-    </mat-button-toggle-group> -->
-    
+    <button
+      (click)="select('Search')"
+      [ngClass]="{ active: isActive1() }"
+      class="btn2"
+      mat-stroked-button
+    >
+      SEARCH
+    </button>
+    <button
+      (click)="select('upload')"
+      [ngClass]="{ active: isActive2() }"
+      class="btn2"
+      mat-stroked-button
+    >
+      UPLOAD
+    </button>
+    <mat-divider></mat-divider>
   </div>
 
-  <div *ngIf="routeValue===true">
+  <div *ngIf="routeValue; else upload">
     <div class="create-party">
-      <button mat-raised-button class="create-party-button" routerLink="/dashboard/add-party">
+      <button
+        mat-raised-button
+        class="create-party-button"
+        routerLink="/dashboard/add-party"
+      >
         Create Party
       </button>
     </div>
@@ -23,70 +36,96 @@
           <mat-panel-title> Search Criteria </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mat-content">
-          <form class="form-inputs">
-            <mat-form-field appearance="outline">
-              <mat-label>Party Id</mat-label>
-              <input matInput placeholder="Party Id" type="number" />
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Party Name</mat-label>
-              <input matInput placeholder="Party Name" />
-            </mat-form-field>
+          <form #form (ngSubmit)="Search(partiesForm.value)" [formGroup]="partiesForm">
+            <div class="form-inputs">
+              <mat-form-field appearance="outline">
+                <mat-label>Party Id</mat-label>
+                <input
+                  matInput
+                  placeholder="Party Id"
+                 formControlName="partyId"
+                  name="partyId"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Party Name</mat-label>
+                <input
+                  matInput
+                
+                 formControlName="partyName"
+                  name="partyName"
+                  placeholder="Party Name"
+                />
+              </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Find By Role</mat-label>
-              <mat-select>
-                <mat-option value="none">None</mat-option>
-                <mat-option value="customer">customer</mat-option>
-                <mat-option value="supplier">supplier</mat-option>
-                <mat-option value="employee">employee</mat-option>
-                <mat-option value="admin">admin</mat-option>
-                <mat-option value="manager">manager</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Find By Status</mat-label>
-              <mat-select>
-                <mat-option value="none">None</mat-option>
-                <mat-option value="active">Active</mat-option>
-                <mat-option value="inactive">Inactive</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <br />
-            <mat-form-field appearance="outline">
-              <mat-label>Find By Type</mat-label>
-              <mat-select>
-                <mat-option value="none">None</mat-option>
-                <mat-option value="group">Group</mat-option>
-                <mat-option value="person">Person</mat-option>
-              </mat-select>
-            </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Find By Role</mat-label>
+                <mat-select formControlName="roles" name="role">
+                  <mat-option value="none">None</mat-option>
+                  <mat-option value="customer">customer</mat-option>
+                  <mat-option value="supplier">supplier</mat-option>
+                  <mat-option value="employee">employee</mat-option>
+                  <mat-option value="admin">admin</mat-option>
+                  <mat-option value="manager">manager</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Find By Status</mat-label>
+                <mat-select formControlName="status" name="status">
+                  <mat-option value="none">none</mat-option>
+                  <mat-option value="active">Active</mat-option>
+                  <mat-option value="inactive">Inactive</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+            <!-- </div>
+              
+            <div class="form-inputs"> -->
+              <mat-form-field appearance="outline">
+                <mat-label>Find By Type</mat-label>
+                <mat-select
+                 formControlName="partyType"
+                  name="partyType"
+                >
+                  <mat-option value="none">none</mat-option>
+                  <mat-option value="group">Group</mat-option>
+                  <mat-option value="person">Person</mat-option>
+                </mat-select>
+              </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Created From Date</mat-label>
-              <input
-                matInput
-                [matDatepicker]="picker"
-                placeholder="from date"
-              />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Created To Date</mat-label>
-              <input matInput [matDatepicker]="picker" placeholder="to date" />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <button mat-raised-button class="create-party-button">
-              Search
-            </button>
+              <mat-form-field appearance="outline">
+                <mat-label>Created From Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  placeholder="from date"
+                 formControlName="createdDate"
+                  name="createdDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Created To Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker1"
+                  placeholder="to date"
+                 formControlName="lastModifiedDate"
+                  name="lastModifiedDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker1"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <button mat-raised-button class="create-button">Search</button>
+            </div>
           </form>
         </div>
       </mat-expansion-panel>
@@ -97,59 +136,66 @@
         <!-- Position Column -->
         <ng-container matColumnDef="PartyId">
           <th mat-header-cell *matHeaderCellDef>PartyId</th>
-          <td mat-cell *matCellDef="let element; let i = index">
-            {{ element.PartyId }}
+          <td mat-cell *matCellDef="let element">
+            {{ element.partyId }}
           </td>
         </ng-container>
 
         >
         <ng-container matColumnDef="Name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+          <td
+            mat-cell
+            routerLink="/dashboard/add-party/{{ element.partyId }}"
+            *matCellDef="let element"
+          >
+            <a>{{ element.partyName }}</a>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="Roles">
           <th mat-header-cell *matHeaderCellDef>Roles</th>
-          <td mat-cell *matCellDef="let element">{{ element.Roles }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.roles }}</td>
         </ng-container>
 
         <ng-container matColumnDef="CreatedAt">
           <th mat-header-cell *matHeaderCellDef>Created At</th>
-          <td mat-cell *matCellDef="let element">{{ element.CreatedAt }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.createdDate }}</td>
         </ng-container>
 
         <ng-container matColumnDef="ModifiedOn">
           <th mat-header-cell *matHeaderCellDef>Modified On</th>
-          <td mat-cell *matCellDef="let element">{{ element.ModifiedOn }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.lastModifiedDate }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="ModifiedBy">
           <th mat-header-cell *matHeaderCellDef>Modified By</th>
-          <td mat-cell *matCellDef="let element">{{ element.ModifiedBy }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.lastModifiedBy }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="Status">
           <th mat-header-cell *matHeaderCellDef>Status</th>
-          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+          <td mat-cell *matCellDef="let element">Active</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        
       </table>
-
+      <div *ngIf="pageSource.length===0" style="margin: auto; width:100%;text-align: center;">No Records Found</div>
       <div class="paginator">
-      <mat-paginator
-        [length]=""
-       
-        showFirstLastButtons
-        [pageSize]="10"
-        aria-label="Select page of periodic elements"
-      >
-      </mat-paginator>
-    </div>
+        <mat-paginator
+        [pageSizeOptions]="[10]" [length]="search_length" (page)="nextPage($event)" showFirstLastButtons
+        >
+        </mat-paginator>
+      </div>
     </div>
   </div>
-  <div #upload *ngIf="routeValue===false">
-    <app-uploadfile></app-uploadfile>
-  </div>
+  <ng-template #upload>
+    <!-- <app-uploadfile></app-uploadfile> -->
+  </ng-template>
 </div>

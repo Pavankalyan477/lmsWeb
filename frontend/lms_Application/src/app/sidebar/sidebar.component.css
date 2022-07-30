@@ -1,13 +1,15 @@
 .example-container {
-  position: fixed;
   background-color: #555;
   width: 100%;
-  height: 100%;
+  height:90%;
   border: 1px solid #555;
+  position: fixed;
+ 
 }
 mat-drawer {
   width: 18%;
   background-color: #40608f;
+
 }
 
 mat-drawer.scrollable {
@@ -22,12 +24,12 @@ mat-drawer-content {
     width: 90%;
     margin: auto;
 }
-.list-options{
-    color:#f8f8f8;
-    background-color: #40608f;
-    font-size: 14px;
+.mat-list-base .mat-list-option {
+  color: white;
+  font-size: 14px;
 }
-mat-divider{
+ 
+.mat-divider{
     border-top-color:#f8f8f8;
     display: block;
     margin: 0;
@@ -35,9 +37,10 @@ mat-divider{
     border-top-style: solid;
 }
 
-.active mat-list-option{
-    color: white;
+.active .mat-list-option{
+    color: #f8f8f8;
     font-size: 16px;
+    font-weight: 500;
 
 }
 

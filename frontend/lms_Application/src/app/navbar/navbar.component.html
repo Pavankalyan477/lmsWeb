@@ -1,9 +1,11 @@
 
-    <mat-toolbar class="navbar" style="width: 100%;">
+    <mat-toolbar class="navbar" >
     <span>
         <img src="https://cf-ofbiz-dev.s3.ap-southeast-1.amazonaws.com/ims/img/logo/custom-furnish.png" alt="customfurnish">
     </span>
     <span class="example-spacer"></span>
-    <a ><p>Welcome  <span> Pavan Kalyan</span></p></a> 
+    <a *ngIf="login===true" (click)="logout()"><p>Welcome  <span> Pavan Kalyan</span></p></a> 
+    <a #Login *ngIf="login===false"><span>Login</span></a> 
+   
   </mat-toolbar>
   

@@ -7,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  login:boolean=true;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  logout(){
+    this.login=false;
+    
+  }
 
   
 }

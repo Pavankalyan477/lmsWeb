@@ -3,7 +3,9 @@
   }
   .navbar{
     background-color: #e7e7e7;
+    width: 100%;
   }
   span{
     color: #40608f;
+    cursor: pointer;
   }
