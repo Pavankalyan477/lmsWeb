@@ -18,7 +18,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PartiesMainComponent } from './parties-main/parties-main.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
@@ -37,6 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DelDialogComponent } from './del-dialog/del-dialog.component';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,10 @@ import { CookieService } from 'ngx-cookie-service';
     MatDialogModule,
     MatSnackBarModule,
   ],
-  providers: [ImsServiceService,CookieService],
+  providers: [ImsServiceService,CookieService,
+              {provide: HTTP_INTERCEPTORS,
+              useClass: AuthInterceptor,
+              multi: true,}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
